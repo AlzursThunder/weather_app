@@ -1,12 +1,19 @@
-import Header from "./Header";
-import Footer from "./Footer";
-import Home from './Home';
+import Button from "./Button";
 import Contact from "./Contact";
-
+import Header from "./Header";
+import Home from './Home';
+import InputElement from "./InputElement";
+import SelectElement from "./SelectElement";
+import TextAreaElement from "./TextAreaElement";
+import Warning from './Warning';
 
 export {
+	Button,
+	Contact,
 	Header,
-	Footer,
 	Home,
-	Contact
+	InputElement,
+	SelectElement,
+	TextAreaElement,
+	Warning,
 }
