@@ -2,13 +2,14 @@ import React, { useRef } from 'react'
 import githubDark from '/src/assets/github-logos/GitHub_Logo.png'
 import logoDark from '/src/assets/Pogodynka-logos/Pogodynka-logos_transparent.png'
 
-const Header: React.FC<HeaderProps> = ({ setRenderHome }) => {
+const Header: React.FC<HeaderProps> = ({ setRenderHome, isValid }) => {
 	const linksList = useRef<HTMLUListElement>(null)
 	
 	return (
-		<nav className='mb-2 shadow-md select-none'>
+		<>
+			<nav className={`mb-2 shadow-md select-none ${!isValid ? 'pointer-events-none' : ''}`}>
 			{/* nav center */}
-			<div className='md:max-w-[1170px] md:mx-auto md:my-0 md:flex md:items-center md:justify-between md:p-2'>
+					<div className='md:max-w-[1170px] md:mx-auto md:my-0 md:flex md:items-center md:justify-between md:p-2'> 
 				{/* nav header */}
 				<div className='flex items-center justify-between p-4 md:p-0'>
 						<img 
@@ -43,6 +44,7 @@ const Header: React.FC<HeaderProps> = ({ setRenderHome }) => {
 				</ul>
 			</div>
 		</nav>
+		</>
 	)
 }
 
