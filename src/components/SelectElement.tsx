@@ -25,9 +25,7 @@ const SelectElement: React.FC = () => {
 			altSpellings.forEach(spell => {
 				tmp.push(spell)
 			})
-			if (tmp.find(n => n.toLowerCase().startsWith(value))) {
-				console.log('match');
-				
+			if (tmp.find(n => n.toLowerCase().startsWith(value))) {				
 				return country
 			}
 		}))
