@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import countriesReducer from './utils/features/countriesSlice'
-import contactReducer from './utils/features/contactSlice'
+import countriesReducer from "./utils/features/countries/countriesSlice";
+import contactReducer from "./utils/features/contact/contactSlice";
+import weatherReducer from "./utils/features/weather/weatherSlice";
+import locationReducer from './utils/features/user-location/locationSlice'
 export const store = configureStore({
 	reducer: {
 		countries: countriesReducer,
-		contact: contactReducer
+		contact: contactReducer,
+		location: locationReducer,
+		weather: weatherReducer,
 	},
 });
 

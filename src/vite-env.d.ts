@@ -17,7 +17,7 @@ interface InputElementProps extends TextAreaElement {
 interface CountriesNamesInitialState {
 	countries: Country[];
 	isLoading: boolean;
-	userCountry: string
+	// userCountry: string
 }
 
 interface InitialCountry {
@@ -76,4 +76,25 @@ interface ContactProps {
 
 interface WarningProps {
 	closeMsg: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface LocationInitialState {
+	userLocation: {
+		status,
+		results
+	};
+	userCoordinates: {
+		latitude: number;
+		longitude: number;
+	};
+	isLoading: boolean;
+}
+
+interface WeatherInitialState {
+	userLocation;
+	userCoordinates: {
+		latitude: number;
+		longitude: number;
+	};
+	isLoading: boolean;
 }
