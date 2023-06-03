@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
-import { Header, Home, Contact } from './components'
+import React, { useState, useEffect, lazy, Suspense } from 'react'
+import { Header, Home, } from './components'
+const Contact = lazy(() => import('./components/Contact'))
 import { useAppDispatch } from './hooks'
 import { getCountriesNames, } from './utils/features/countries/getCountriesNames'
 import { getUserCoordinates } from './utils/features/user-location/getUserCoordinates'
@@ -20,8 +21,11 @@ function App() {
 			<div className='px-2'>
 				{
 					renderHome ?
-						<Home /> :
-						<Contact isValid={isValid} setIsValid={setIsValid} />
+						<Home /> : (
+							<Suspense fallback={<h4>Loading...</h4>}>
+								<Contact isValid={isValid} setIsValid={setIsValid} />
+							</Suspense>
+						)
 				}
 			</div>
 		</>
