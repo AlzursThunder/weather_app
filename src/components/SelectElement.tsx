@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../hooks'
 import { nanoid } from 'nanoid'
-import { setState } from '../utils/features/contactSlice'
+import { setState } from '../utils/features/contact/contactSlice'
 
 const SelectElement: React.FC = () => {
 	const [searchValue, setSearchValue] = useState<string>('')
@@ -25,7 +25,7 @@ const SelectElement: React.FC = () => {
 			altSpellings.forEach(spell => {
 				tmp.push(spell)
 			})
-			if (tmp.find(n => n.toLowerCase().startsWith(value))) {				
+			if (tmp.find(n => n.toLowerCase().startsWith(value))) {
 				return country
 			}
 		}))
@@ -44,7 +44,7 @@ const SelectElement: React.FC = () => {
 				value={searchValue}
 				onChange={(event) => handleSearch(event)}
 			/>
-			<label 
+			<label
 				htmlFor={id}
 				className='absolute -top-3 text-medium-gray text-xs left-0 inline-block w-full h-full px-3 py-4 overflow-hidden border-[1px] border-solid border-transparent pointer-events-none text-start text-ellipsis whitespace-nowrap'
 			>type country name to search it dialing code</label>
@@ -53,10 +53,10 @@ const SelectElement: React.FC = () => {
 					<div className='absolute z-10 w-full py-1 mt-1 overflow-auto bg-white border-purple-500 rounded-md shadow-lg border-[1px] max-h-52'>
 						{filteredCountries.map(country => (
 							<div
-								key={nanoid()} 
+								key={nanoid()}
 								className='px-4 py-2 cursor-pointer hover:bg-purple-100'
 								onClick={() => {
-									dispatch(setState({ id, value: `${country.name.common} ${country.idd.root}${country.idd.suffix}`}))
+									dispatch(setState({ id, value: `${country.name.common} ${country.idd.root}${country.idd.suffix}` }))
 									setSearchValue(`${country.name.common} ${country.idd.root}${country.idd.suffix}`)
 									setShowOptions(false)
 								}}

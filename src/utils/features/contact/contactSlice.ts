@@ -14,7 +14,6 @@ const contactSlice = createSlice({
 	initialState,
 	reducers: {
 		setState: (state, { payload }: PayloadAction<ContactPayload>) => {
-			
 			return ({
 				...state,
 				[payload.id]: payload.value

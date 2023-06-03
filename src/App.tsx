@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import {  Header, Home, Contact } from './components'
+import { Header, Home, Contact } from './components'
 import { useAppDispatch } from './hooks'
-import { getCountriesNames, getUserCountry } from './utils/features/countriesSlice'
-
+import { getCountriesNames, } from './utils/features/countries/getCountriesNames'
+import { getUserCoordinates } from './utils/features/user-location/getUserCoordinates'
+import { getUserLocation } from './utils/features/user-location/getUserLocation'
 function App() {
-	const [renderHome, setRenderHome] = useState(false)
+	const [renderHome, setRenderHome] = useState(true)
 	const [isValid, setIsValid] = useState<boolean>(true)
 	const thunkDispatch = useAppDispatch()
 	useEffect(() => {
 		thunkDispatch(getCountriesNames())
-		thunkDispatch(getUserCountry())
+		thunkDispatch(getUserCoordinates())
+			.then(() => thunkDispatch(getUserLocation()))
 	}, [])
-	
+
 	return (
 		<>
 			<Header setRenderHome={setRenderHome} isValid={isValid} />
