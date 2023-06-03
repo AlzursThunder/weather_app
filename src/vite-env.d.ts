@@ -90,11 +90,6 @@ interface LocationInitialState {
 	isLoading: boolean;
 }
 
-interface WeatherInitialState {
-	userLocation;
-	userCoordinates: {
-		latitude: number;
-		longitude: number;
-	};
-	isLoading: boolean;
-}
+// interface WeatherInitialState {
+
+// }
