@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import { useAppDispatch, useAppSelector } from '../hooks'
-import { resetState } from '../utils/features/contactSlice'
+import { resetState, } from '../utils/features/contact/contactSlice'
 import { Button, InputElement, SelectElement, TextAreaElement, Warning } from '.'
 import { validateContactData } from '../utils/functions'
+import { getCountriesNames } from '../utils/features/countries/getCountriesNames'
 
 const Contact: React.FC<ContactProps> = ({ isValid, setIsValid }) => {
 	const contact = useAppSelector(state => state.contact)
@@ -12,28 +13,32 @@ const Contact: React.FC<ContactProps> = ({ isValid, setIsValid }) => {
 	const handleSubmit = () => {
 		setLoading(true)
 		emailjs.send(
-			'<service key>',
-			'<template key>',
+			"<service_key>",
+			"<template_key>",
 			{
 				from_name: `${contact.firstName} ${contact.lastName}`,
-				to_name: 'Peter',
+				to_name: "Peter",
 				from_email: contact.email,
-				to_email: 'justaveragewetherapp@gmail.com',
-				message: `Dialing code: ${contact.countryPrefix}\n Phone number: ${contact.phone}\n Message:\n ${contact.question}`
+				to_email: "justaveragewetherapp@gmail.com",
+				message: `Dialing code: ${contact.countryPrefix}\n Phone number: ${contact.phone}\n Message:\n ${contact.question}`,
 			},
-			'<public key>'
+			"<public_key>"
 		)
 			.then(() => {
 				setLoading(false)
 				alert('Thank you. I\'ll contact you as soon as possible.')
 				dispatch(resetState())
-			}, error => {
+			}, (error) => {
 				setLoading(false)
 				console.log(error);
-
 				alert('Sorry, something went wrong.')
 			})
 	}
+
+	useEffect(() => {
+		dispatch(getCountriesNames())
+	}, [])
+
 	return (
 		<>
 			{
