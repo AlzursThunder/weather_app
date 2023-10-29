@@ -10,7 +10,7 @@ const Header: React.FC = () => {
 	const currentPathname = usePathname();
 
 	return (
-		<nav className="shadow-md select-none">
+		<nav className="mb-1 shadow-md select-none">
 			{/* nav center */}
 			<div className="md:max-w-[1170px] md:mx-auto flex w-full justify-between items-center px-6">
 				{/* nav header */}

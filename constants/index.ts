@@ -34,3 +34,24 @@ export const formCotrolsData: FormCotrolData[] = [
 		renderInput: false,
 	},
 ];
+
+export const cities: string[] = [
+	"Edinburgh",
+	"Chicago",
+	"Sopot",
+	"Prague",
+	"Madrid",
+	"New York",
+];
+
+export const suggestedCities: string[] = [
+	"Warsaw",
+	"Amsterdam",
+	"Tokyo",
+	"Hamburg",
+];
+
+export const errCities = [
+	"Pekin",
+	"Lisbon",
+]
